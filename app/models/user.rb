@@ -35,9 +35,7 @@ class User < ApplicationRecord
   has_many :favorite_microposts, through: :favorites, source: :micropost
   
   def favorite(micropost)
-    unless self == micropost
-      self.favorites.find_or_create_by(micropost_id: micropost.id)
-    end
+    self.favorites.find_or_create_by(micropost_id: micropost.id)
   end
   
   def unfavorite(micropost)
